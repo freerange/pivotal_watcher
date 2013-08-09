@@ -3,7 +3,7 @@ require 'recap/recipes/ruby'
 set :application, 'pivotal_watcher'
 set :repository, 'git@github.com:floehopper/pivotal_watcher.git'
 
-server 'gofreerange.com', :app
+server 'alpaca.gofreerange.com', :app
 
 set :whenever_command, "bundle exec whenever"
 set(:whenever_identifier)   { application }
