@@ -20,9 +20,9 @@
 # Learn more: http://github.com/javan/whenever
 
 env :PATH, '/usr/local/bin:/usr/bin:/bin'
-env :MAILTO, 'james.mead@gofreerange.com'
+env :MAILTO, 'everyone@gofreerange.com'
 
-every 10.minutes do
+every :weekday, at: '7am' do
   # Write the script output to a file and then, if the file has a size greater than 0, mail the content of the file to everyone
-  command 'cd ~/app && rm -f tmp-script-output && bundle exec ruby watch.rb > tmp-script-output 2>&1; if [ -s tmp-script-output ]; then cat tmp-script-output | mail -s "Pivotal Tracker Watcher Report" james.mead@gofreerange.com; fi'
+  command 'cd ~/app && rm -f tmp-script-output && bundle exec ruby watch.rb > tmp-script-output 2>&1; if [ -s tmp-script-output ]; then cat tmp-script-output | mail -s "Pivotal Tracker Watcher Report - FutureLearn" everyone@gofreerange.com; fi'
 end
