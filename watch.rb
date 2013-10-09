@@ -1,6 +1,9 @@
 require 'bundler/setup'
 require 'pivotal-tracker'
 
+ELLIPSIS = '...'
+PLAIN_TEXT_EMAIL_LINE_WIDTH = 78
+
 # RestClient.log = $stdout
 
 PivotalTracker::Client.token = ENV['PIVOTAL_TRACKER_API_TOKEN']
@@ -22,18 +25,19 @@ def owner_of(owned_by)
   owned_by ? owned_by : 'Unassigned'
 end
 
-def reference(story)
-  story.name[/^(FL\d+)\s/]
-  $1
+def truncate(text)
+  maximum_length_with_room_for_ellipsis = PLAIN_TEXT_EMAIL_LINE_WIDTH - ELLIPSIS.length
+  text.length >= maximum_length_with_room_for_ellipsis ? text[0...maximum_length_with_room_for_ellipsis] + ELLIPSIS : text
 end
 
 def generate_report(caption, stories)
   puts "\n#{caption}:\n\n"
 
-  stories.group_by(&:owned_by).each do |owned_by, stories|
-    puts "  * #{owner_of(owned_by)}"
+  stories.group_by(&:owned_by).sort_by { |owned_by, stories| -stories.length }.each do |owned_by, stories|
+    puts "  * #{owner_of(owned_by)} (#{stories.length})"
     stories.each do |story|
-      puts "    * #{story.url} (#{[reference(story), story.story_type, story.current_state].compact.join(', ')})"
+      puts truncate(%{    * #{story.name.strip}})
+      puts %{      - #{story.url} (#{story.story_type})}
     end
   end
 end
