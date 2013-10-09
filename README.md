@@ -8,3 +8,12 @@ Sets up a cron job to generate a report on the state of a PivotalTracker project
 
 * Ruby 1.9
 * cron & command line email e.g. mailutils & postfix
+
+## Credits
+
+Pivotal Watcher was written by [James Mead](http://jamesmead.org) and the other members of [Go Free Range](http://gofreerange.com).
+
+
+## License
+
+Pivotal Watcher is released under the [MIT License](https://github.com/freerange/pivotal_watcher/blob/master/LICENSE).
