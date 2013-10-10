@@ -1,7 +1,7 @@
 require 'recap/recipes/ruby'
 
 set :application, 'pivotal_watcher'
-set :repository, 'git@github.com:floehopper/pivotal_watcher.git'
+set :repository, 'git@github.com:freerange/pivotal_watcher.git'
 
 server 'alpaca.gofreerange.com', :app
 
