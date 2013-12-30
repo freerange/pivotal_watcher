@@ -42,6 +42,8 @@ def generate_report(caption, stories)
   end
 end
 
+puts "Report for Pivotal Tracker project: #{project.name}"
+
 generate_report("There are #{stories_in_progress.length} stories in progress (#{features_in_progress.length} features and #{bugs_in_progress.length} bugs)", stories_in_progress)
 generate_report("There are #{stories_finished.length} finished stories (#{features_finished.length} features and #{bugs_finished.length} bugs)", stories_finished)
 generate_report("There are #{stories_blocked.length} blocked stories in the backlog of #{stories_in_backlog.length} stories", stories_blocked)
