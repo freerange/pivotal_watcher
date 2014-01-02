@@ -21,6 +21,7 @@
 
 env :PATH, '/usr/local/bin:/usr/bin:/bin'
 env :MAILTO, 'everyone@gofreerange.com'
+env :PIVOTAL_WATCHER_RECIPIENTS, 'delivery@futurelearn.com'
 
 every :weekday, at: '7am' do
   # Write the script output to a file and then, if the file has a size greater than 0, mail the content of the file to everyone
